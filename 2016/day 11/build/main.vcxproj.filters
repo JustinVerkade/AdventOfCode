@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\J.Verkade\OneDrive\Scripts\Advent of Code\2016\day 11\src\main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\J.Verkade\OneDrive\Scripts\Advent of Code\2016\day 11\src\Building.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\J.Verkade\OneDrive\Scripts\Advent of Code\2016\day 11\src\Hash.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\J.Verkade\OneDrive\Scripts\Advent of Code\2016\day 11\src\HashLink.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\J.Verkade\OneDrive\Scripts\Advent of Code\2016\day 11\src\Queue.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\J.Verkade\OneDrive\Scripts\Advent of Code\2016\day 11\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{A73C5291-A0CD-3C91-8326-E15F50EAE11E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

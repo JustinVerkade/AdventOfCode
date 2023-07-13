@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\J.Verkade\OneDrive\Scripts\Advent of Code\2015\day 6\build\CMakeFiles\444c0556d31f6a7390917d14f41f23e4\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{EC8CB1B5-02CE-30FB-89BF-BC7666994DCA}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

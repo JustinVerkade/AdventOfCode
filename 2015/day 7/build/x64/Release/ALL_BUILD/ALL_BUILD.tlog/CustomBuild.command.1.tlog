@@ -1,0 +1,10 @@
+^C:\USERS\J.VERKADE\ONEDRIVE\SCRIPTS\ADVENT OF CODE\2015\DAY 7\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/J.Verkade/OneDrive/Scripts/Advent of Code/2015/day 7" "-BC:/Users/J.Verkade/OneDrive/Scripts/Advent of Code/2015/day 7/build" --check-stamp-file "C:/Users/J.Verkade/OneDrive/Scripts/Advent of Code/2015/day 7/build/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

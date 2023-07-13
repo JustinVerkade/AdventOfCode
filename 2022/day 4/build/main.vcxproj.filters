@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Justin\OneDrive\Scripts\Advent of Code\2022\day 4\src\main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Justin\OneDrive\Scripts\Advent of Code\2022\day 4\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{9964BC2E-6193-3231-A4FE-126B449C0E63}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

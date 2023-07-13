@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\J.Verkade\OneDrive\Scripts\Advent of Code\2022\day 9\src\main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\J.Verkade\OneDrive\Scripts\Advent of Code\2022\day 9\src\queue.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\J.Verkade\OneDrive\Scripts\Advent of Code\2022\day 9\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{0D2D6D6E-1538-36C5-B4B3-E5EB7D208F6B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

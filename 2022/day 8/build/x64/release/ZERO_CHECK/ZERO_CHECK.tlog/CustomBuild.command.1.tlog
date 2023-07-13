@@ -1,0 +1,10 @@
+^C:\USERS\JUSTIN\ONEDRIVE\SCRIPTS\ADVENT OF CODE\2022\DAY 8\BUILD\CMAKEFILES\1BBA85826A9E2E6D1328960B05068808\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/Justin/OneDrive/Scripts/Advent of Code/2022/day 8" "-BC:/Users/Justin/OneDrive/Scripts/Advent of Code/2022/day 8/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/Justin/OneDrive/Scripts/Advent of Code/2022/day 8/build/main.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

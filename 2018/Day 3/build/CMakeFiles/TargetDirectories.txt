@@ -1,0 +1,3 @@
+C:/Users/J.Verkade/OneDrive/Scripts/Advent of Code/2018/Day 3/build/CMakeFiles/main.dir
+C:/Users/J.Verkade/OneDrive/Scripts/Advent of Code/2018/Day 3/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/J.Verkade/OneDrive/Scripts/Advent of Code/2018/Day 3/build/CMakeFiles/ZERO_CHECK.dir

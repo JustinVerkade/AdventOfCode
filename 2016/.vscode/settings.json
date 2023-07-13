@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "queue.h": "c",
+        "node.h": "c",
+        "stdlib.h": "c",
+        "string.h": "c",
+        "bot.h": "c",
+        "bot_queue.h": "c",
+        "stdio.h": "c",
+        "bot_node.h": "c",
+        "display.h": "c"
+    }
+}
