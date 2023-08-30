@@ -1,6 +1,6 @@
-^C:\USERS\JUSTIN\ONEDRIVE\SCRIPTS\ADVENT OF CODE\2022\DAY 17\CMAKELISTS.TXT
+^C:\USERS\J.VERKADE\DESKTOP\PROGRAMMING\ADVENTOFCODE\2022\DAY 17\CMAKELISTS.TXT
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/Justin/OneDrive/Scripts/Advent of Code/2022/day 17" "-BC:/Users/Justin/OneDrive/Scripts/Advent of Code/2022/day 17/build" --check-stamp-file "C:/Users/Justin/OneDrive/Scripts/Advent of Code/2022/day 17/build/CMakeFiles/generate.stamp"
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/J.Verkade/Desktop/Programming/AdventOfCode/2022/day 17" "-BC:/Users/J.Verkade/Desktop/Programming/AdventOfCode/2022/day 17/build" --check-stamp-file "C:/Users/J.Verkade/Desktop/Programming/AdventOfCode/2022/day 17/build/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

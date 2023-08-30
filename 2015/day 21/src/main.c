@@ -54,9 +54,11 @@ uint16_t buildCharacter(item_t *items, uint8_t *filter_list, int8_t *ap, int8_t 
     return cost;
 }
 
+int32_t recursive_calls = 0;
 uint32_t best_cost = 9999999;
 void recursive(item_t *items, uint8_t *filter_list)
 {
+    recursive_calls++;
     // check exit conditions
     uint8_t ap, dp;
     uint16_t cost = buildCharacter(items, filter_list, &ap, &dp);
@@ -66,6 +68,7 @@ void recursive(item_t *items, uint8_t *filter_list)
         {
             best_cost = cost;
             printf("Best cost: %d\n", cost);
+            printf("Recursive: %lu\n", recursive_calls);
         }
     }
     if(best_cost <= cost)
@@ -228,6 +231,7 @@ void day1()
 int32_t worst_cost = -9999;
 void recursive2(item_t *items, uint8_t *filter_list)
 {
+    recursive_calls++;
     // check exit conditions
     uint8_t ap, dp;
     uint16_t cost = buildCharacter(items, filter_list, &ap, &dp);
@@ -237,6 +241,7 @@ void recursive2(item_t *items, uint8_t *filter_list)
         {
             worst_cost = cost;
             printf("Worst cost: %d\n", cost);
+            printf("Recursive: %lu\n", recursive_calls);
         }
     }
 
@@ -387,6 +392,7 @@ void day2()
     }
     
     // recursive
+    recursive_calls = 0;
     uint8_t filter_list[16] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     recursive2(items, filter_list);
 }
