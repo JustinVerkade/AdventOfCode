@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\J.Verkade\Desktop\Programming\AdventOfCode\2016\day 21\main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\J.Verkade\Desktop\Programming\AdventOfCode\2016\day 21\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{031BF4F0-9681-3DC4-98AA-371682F716F8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,10 @@
+^C:\USERS\J.VERKADE\DESKTOP\PROGRAMMING\ADVENTOFCODE\2016\DAY 17\BUILD\CMAKEFILES\EA3E4C2BA133F3332C8D3692136A4637\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/J.Verkade/Desktop/Programming/AdventOfCode/2016/day 17" "-BC:/Users/J.Verkade/Desktop/Programming/AdventOfCode/2016/day 17/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/J.Verkade/Desktop/Programming/AdventOfCode/2016/day 17/build/main.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
