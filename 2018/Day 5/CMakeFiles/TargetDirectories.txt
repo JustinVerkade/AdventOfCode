@@ -1,0 +1,3 @@
+C:/Users/J.Verkade/Desktop/Programming/AdventOfCode/2018/Day 5/CMakeFiles/main.dir
+C:/Users/J.Verkade/Desktop/Programming/AdventOfCode/2018/Day 5/CMakeFiles/ALL_BUILD.dir
+C:/Users/J.Verkade/Desktop/Programming/AdventOfCode/2018/Day 5/CMakeFiles/ZERO_CHECK.dir

@@ -1,0 +1,1 @@
+/usr/bin/cc -rdynamic CMakeFiles/aoc.dir/main.c.o -o aoc 

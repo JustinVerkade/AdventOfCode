@@ -1,0 +1,1 @@
+/usr/bin/cc -rdynamic CMakeFiles/main.dir/src/main.c.o CMakeFiles/main.dir/src/Building.c.o CMakeFiles/main.dir/src/Hash.c.o CMakeFiles/main.dir/src/HashLink.c.o CMakeFiles/main.dir/src/Queue.c.o -o main 
