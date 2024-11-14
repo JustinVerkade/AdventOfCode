@@ -1,0 +1,4 @@
+System.c:14:6:System_init	1
+System.c:28:6:System_selfTest	5
+System.c:48:6:System_initLog	2
+System.c:73:6:System_selfTestLog	5
