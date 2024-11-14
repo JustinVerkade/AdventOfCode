@@ -1,0 +1,13 @@
+main.c:101:6:HAL_ADC_ConvCpltCallback	1
+main.c:113:5:main	1
+main.c:188:6:SystemClock_Config	4
+main.c:245:13:MX_ADC1_Init	4
+main.c:306:13:MX_SDMMC1_SD_Init	1
+main.c:334:13:MX_SPI1_Init	2
+main.c:374:13:MX_TIM1_Init	4
+main.c:421:13:MX_TIM11_Init	4
+main.c:467:13:MX_USART1_UART_Init	2
+main.c:500:13:MX_DMA_Init	1
+main.c:523:13:MX_FMC_Init	2
+main.c:581:13:MX_GPIO_Init	1
+main.c:703:6:Error_Handler	6
