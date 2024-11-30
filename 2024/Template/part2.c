@@ -12,7 +12,7 @@
 
 //######################################################################################################################
 
-int adventOfCodePuzzle(char* file_name)
+int solve_puzzle(char* file_name)
 {
     printf("File: %s\n", file_name);
 }
@@ -21,13 +21,11 @@ int adventOfCodePuzzle(char* file_name)
 
 int main(int argc, char* argv[])
 {
-    // get file name
-    if(argc == 1)
-    {
+    if (argc == 1) {
         printf("Please add the file name with the exeutable!\n");
         return 1;
     }
     char* file_name = argv[1];
-    adventOfCodePuzzle(file_name);
+    solve_puzzle(file_name);
     return 0;
 }
