@@ -53,4 +53,5 @@ dkms.conf
 
 # secure files
 .env
-.txt
+*/data.txt
+*/test.txt
