@@ -55,3 +55,6 @@ dkms.conf
 .env
 */data.txt
 */test.txt
+
+# build folders
+*/build/
