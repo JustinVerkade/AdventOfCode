@@ -53,8 +53,8 @@ dkms.conf
 
 # secure files
 .env
-*/data.txt
-*/test.txt
+*data.txt
+*test.txt
 
 # build folders
-*/build/
+*build/
