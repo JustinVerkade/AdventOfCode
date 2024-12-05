@@ -3,6 +3,7 @@
         "string.h": "c",
         "stdint.h": "c",
         "stdlib.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "compare": "c"
     }
 }
