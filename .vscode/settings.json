@@ -4,6 +4,7 @@
         "stdint.h": "c",
         "stdlib.h": "c",
         "stdio.h": "c",
-        "compare": "c"
+        "compare": "c",
+        "math.h": "c"
     }
 }
