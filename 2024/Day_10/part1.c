@@ -71,14 +71,14 @@ static int32_t get_trailscore(char* map, Position* trailhead)
     memcpy(replica_map, map, map_bytes);
     int32_t map_size = get_map_size(map);
 
-    Position dfs[2000];
-    int32_t dfs_size = sizeof(dfs) / sizeof(Position);
+    Position bfs[2000];
+    int32_t bfs_size = sizeof(bfs) / sizeof(Position);
     int32_t write_ptr = 0;
     int32_t read_ptr = 0;
 
-    dfs[write_ptr].value = trailhead->value;
-    dfs[write_ptr].x = trailhead->x;
-    dfs[write_ptr].y = trailhead->y;
+    bfs[write_ptr].value = trailhead->value;
+    bfs[write_ptr].x = trailhead->x;
+    bfs[write_ptr].y = trailhead->y;
     write_ptr++;
 
     int8_t x_dir[4] = {0, 1, 0, -1};
@@ -86,8 +86,8 @@ static int32_t get_trailscore(char* map, Position* trailhead)
 
     int32_t score = 0;
     while (write_ptr != read_ptr) {
-        Position* position = &dfs[read_ptr];
-        read_ptr = (read_ptr + 1) % dfs_size;
+        Position* position = &bfs[read_ptr];
+        read_ptr = (read_ptr + 1) % bfs_size;
 
         int32_t current_index = position->x + position->y * (map_size + 1);
         char current_character = replica_map[current_index];
@@ -113,12 +113,12 @@ static int32_t get_trailscore(char* map, Position* trailhead)
                 if (value - 1 != position->value)
                     continue;
 
-                dfs[write_ptr].value = value;
-                dfs[write_ptr].x = position_x;
-                dfs[write_ptr].y = position_y;
-                write_ptr = (write_ptr + 1) % dfs_size;
+                bfs[write_ptr].value = value;
+                bfs[write_ptr].x = position_x;
+                bfs[write_ptr].y = position_y;
+                write_ptr = (write_ptr + 1) % bfs_size;
                 if (write_ptr == read_ptr) {
-                    printf("DFS buffer overflow!\n");
+                    printf("bfs buffer overflow!\n");
                     free(replica_map);
                     return 0;
                 }
