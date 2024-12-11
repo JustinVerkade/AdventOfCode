@@ -17,10 +17,10 @@ def main():
 
     # copy template structure
     day = int(input("Enter day:"))
-    os.system(f"cp -r ./2024/Template ./2024/Day_{day}")
+    os.system(f"cp -r ./2024/Template ./2024/Day_{day:02d}")
 
     # write input to data.txt
-    with open(f"./2024/Day_{day}/build/data.txt", "w") as file:
+    with open(f"./2024/Day_{day:02d}/build/data.txt", "w") as file:
         cookies = {"session": session_key}
         get_request = requests.get(f"https://adventofcode.com/2024/day/{day}/input", cookies=cookies)
         raw_data = get_request.text
