@@ -1,0 +1,2 @@
+B = (y * Xa - x * Ya) / (Yb * Xa - Xb * Ya)
+A = (x - B * Xb) / Xa

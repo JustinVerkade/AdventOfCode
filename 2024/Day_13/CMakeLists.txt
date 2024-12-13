@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 2.8)
+project(AoC)
+add_executable(part1 part1.c)
+target_link_libraries(part1 m)
+add_executable(part2 part2.c)
+target_link_libraries(part2 m)
