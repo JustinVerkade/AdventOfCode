@@ -121,10 +121,7 @@ static int64_t get_secrets(char* file_name, int64_t* numbers)
 
 static int8_t get_price(int64_t number)
 {
-    char buffer[32];
-    sprintf(buffer, "%ld", number);
-    int32_t buffer_length = strlen(buffer);
-    return atoi(&buffer[buffer_length - 1]);
+    return number % 10;
 }
 
 static int64_t get_highest_bananas(Delta* p_delta, int8_t* codes)
