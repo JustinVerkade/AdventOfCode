@@ -47,88 +47,83 @@ static int32_t get_largest_interconnect(Link* links, int32_t links_count, uint16
     int32_t values_count = 0;
     for (int32_t i=0; i<links_count; i++) {
         Link* start = &links[i];
-        if ((uint8_t)start->pc[0] != 't' && (uint8_t)start->pc[1] != 't')
-            continue;
-        uint16_t start_value = 0;
-        if ((uint8_t)start->pc[0] == 't') {
-            start_value = start->pc[0];
-        } else {
-            start_value = start->pc[1];
-        }
+        for (int32_t v=0; v<2; v++) {
+            uint16_t start_value = start->pc[v];
 
-        // get all links that include our t- value
-        Link* connected[4096];
-        int32_t connected_size = sizeof(connected) / sizeof(Link*);
-        int32_t connected_count = 0;
-        for (int32_t j=0; j<links_count; j++) {
-            if (j == i)
-                continue;
-            Link* link = &links[j];
-            if (link->pc[0] != start_value && link->pc[1] != start_value)
-                continue;
-            connected[connected_count] = link;
-            connected_count++;
-            if (connected_count == connected_size) {
-                printf("Connected buffer overflowed!\n");
-                return 0l;
-            }
-        }
-
-        // for each connection remove links that are not connected by the sub link
-        for (int32_t j=0; j<connected_count; j++) {
-            Link* check_conn = connected[j];
-            uint16_t check_value = 0;
-            if (check_conn->pc[0] == start_value) {
-                check_value = check_conn->pc[1];
-            } else {
-                check_value = check_conn->pc[0];
-            }
-
-            // for each connection find in the check connection if there is a link
-            for (int32_t k=0; k<connected_count; k++) {
-                if (j == k)
+            // get all links that include our t- value
+            Link* connected[4096];
+            int32_t connected_size = sizeof(connected) / sizeof(Link*);
+            int32_t connected_count = 0;
+            for (int32_t j=0; j<links_count; j++) {
+                if (j == i)
                     continue;
-                Link* connection = connected[k];
-                uint16_t test_value = 0;
-                if (connection->pc[0] == start_value) {
-                    test_value = connection->pc[1];
-                } else {
-                    test_value = connection->pc[0];
-                }
-                if (test_value == check_value)
+                Link* link = &links[j];
+                if (link->pc[0] != start_value && link->pc[1] != start_value)
                     continue;
-
-                // find a link that has both the check and test value
-                int8_t found = 0;
-                for (int32_t l=0; l<links_count; l++) {
-                    Link* conn = &links[l];
-                    if ((conn->pc[0] == test_value && conn->pc[1] == check_value) || 
-                        (conn->pc[1] == test_value && conn->pc[0] == check_value)) {
-                        found = 1;
-                        break;
-                    }
-                }
-                if (found == 0) {
-                    int32_t move_size = links_count - k + 5;
-                    for (int32_t p=0; p<move_size; p++) {
-                        connected[j] = connected[j + 1];
-                    }
-                    connected_count--;
-                    k--;
-                    if (j > k)
-                        j--;
+                connected[connected_count] = link;
+                connected_count++;
+                if (connected_count == connected_size) {
+                    printf("Connected buffer overflowed!\n");
+                    return 0l;
                 }
             }
-        }
 
-        if (connected_count > values_count) {
-            values_count = 0;
+            // for each connection remove links that are not connected by the sub link
             for (int32_t j=0; j<connected_count; j++) {
-                Link* connection = connected[j];
-                values[j * 2] = connection->pc[0];
-                values[j * 2 + 1] = connection->pc[1];
+                Link* check_conn = connected[j];
+                uint16_t check_value = 0;
+                if (check_conn->pc[0] == start_value) {
+                    check_value = check_conn->pc[1];
+                } else {
+                    check_value = check_conn->pc[0];
+                }
+
+                // for each connection find in the check connection if there is a link
+                for (int32_t k=0; k<connected_count; k++) {
+                    if (j == k)
+                        continue;
+                    Link* connection = connected[k];
+                    uint16_t test_value = 0;
+                    if (connection->pc[0] == start_value) {
+                        test_value = connection->pc[1];
+                    } else {
+                        test_value = connection->pc[0];
+                    }
+                    if (test_value == check_value)
+                        continue;
+
+                    // find a link that has both the check and test value
+                    int8_t found = 0;
+                    for (int32_t l=0; l<links_count; l++) {
+                        Link* conn = &links[l];
+                        if ((conn->pc[0] == test_value && conn->pc[1] == check_value) || 
+                            (conn->pc[1] == test_value && conn->pc[0] == check_value)) {
+                            found = 1;
+                            break;
+                        }
+                    }
+                    if (found == 0) {
+                        int32_t move_size = links_count - k + 5;
+                        for (int32_t p=0; p<move_size; p++) {
+                            connected[j] = connected[j + 1];
+                        }
+                        connected_count--;
+                        k--;
+                        if (j > k)
+                            j--;
+                    }
+                }
             }
-            values_count = connected_count;
+
+            if (connected_count > values_count) {
+                values_count = 0;
+                for (int32_t j=0; j<connected_count; j++) {
+                    Link* connection = connected[j];
+                    values[j * 2] = connection->pc[0];
+                    values[j * 2 + 1] = connection->pc[1];
+                }
+                values_count = connected_count;
+            }
         }
     }
     return values_count * 2;
