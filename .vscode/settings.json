@@ -6,6 +6,7 @@
         "stdio.h": "c",
         "compare": "c",
         "math.h": "c",
-        "type_traits": "c"
+        "type_traits": "c",
+        "cmath": "c"
     }
 }
