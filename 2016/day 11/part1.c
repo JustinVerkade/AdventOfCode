@@ -371,14 +371,8 @@ int solve_puzzle(char* file_name)
                 // sort state
                 state_sort(&new_state);
                 
-                // skip if the state is invalid.
-                if (state_check(&new_state) == 0) {
-                    continue;
-                }
-
-                // skip if state is already in cache
-                if (cache_exists(cache, &new_state) == 0) {
-                    // add state to queue and cache
+                // add to queue and cache if it does not exist in cache and is valid.
+                if (cache_exists(cache, &new_state) == 0 && state_check(&new_state)) {
                     queue_push(queue, &new_state);
                     cache_push(cache, &new_state);
                 }
