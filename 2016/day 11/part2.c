@@ -283,15 +283,6 @@ int8_t cache_exists(Cache_t* cache, State_t* state)
 int solve_puzzle(char* file_name)
 {
     // create base state
-    // State_t base_state;
-    // base_state.elevator = 0;
-    // base_state.set_count = 2;
-    // base_state.sets[0].generator = 1;
-    // base_state.sets[0].microchip = 0;
-    // base_state.sets[1].generator = 2;
-    // base_state.sets[1].microchip = 0;
-    // base_state.steps = 0;
-
     State_t base_state;
     base_state.elevator = 0;
     base_state.set_count = 7;
