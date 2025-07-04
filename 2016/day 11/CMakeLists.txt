@@ -1,2 +1,4 @@
-project(main)
-add_executable(main src/main.c src/Building.c src/Hash.c src/HashLink.c src/Queue.c)
+cmake_minimum_required(VERSION 2.8)
+project(AoC)
+add_executable(part1 part1.c)
+add_executable(part2 part2.c)
