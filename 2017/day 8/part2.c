@@ -189,10 +189,7 @@ int solve_puzzle(char* file_name)
         }
 
     }
-
     
-
-
     printf("Answer: %d\n", answer);
 }
 
