@@ -65,11 +65,11 @@ int solve_puzzle(char* file_name)
         int32_t vertical_steps = abs(target_y) - steps;
         steps += vertical_steps / 2;
         if (steps > largests) {
-            printf("vertical: %d\n", steps);
             largests = steps;
         }
     }
     printf("Position: %d, %d\n", target_x, target_y);
+    printf("Farthest: %d\n", largests);
 }
 
 //######################################################################################################################
