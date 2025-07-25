@@ -8,7 +8,7 @@
 //######################################################################################################################
 // type defines
 
-
+#define GRID_SIZE (128u)
 
 //######################################################################################################################
 
@@ -32,26 +32,10 @@ void reverse_sequence(int32_t* ring, int32_t ring_count, int32_t start, int32_t 
     }
 }
 
-/*
- * Print the ring to terminal
- *
- * @param ring pointer to the value ring.
- * @param ring_count amount of elements in the ring.
- */
-void ring_print(int32_t* ring, int32_t ring_count)
+void create_hash(char* hash, uint8_t result[16])
 {
-    printf("Sequence: ");
-    for (int32_t i=0; i<ring_count; i++) {
-        printf("%d, ", ring[i]);
-    }
-    printf("\n");
-}
-
-int solve_puzzle(char* file_name)
-{
-    // char lengths[256] = "AoC 2017";
-    char lengths[256] = {0};
-    strcat(lengths, file_name);
+    uint8_t lengths[256] = {0};
+    strcat(lengths, hash);
     
     lengths[strlen(lengths)] = 17;
     lengths[strlen(lengths)] = 31;
@@ -85,10 +69,77 @@ int solve_puzzle(char* file_name)
         for (int32_t index=1; index<16; index++) {
             value = value ^ ring[start_index + index];
         }
+        result[block] = (uint8_t)value;
         printf("%08b", (uint8_t)value);
     }
     printf("\n");
 }
+
+void recursive(char grid[GRID_SIZE][GRID_SIZE + 1], int32_t x, int32_t y)
+{
+    char tile = grid[y][x];
+    if (tile != '#') {
+        return;
+    }
+
+    grid[y][x] = '@';
+
+    int8_t directions[4][2] = {{ 0, 1}, { 0,-1}, { 1, 0}, {-1, 0}};
+    for (int8_t dir=0; dir<4; dir++) {
+        int32_t next_x = x + directions[dir][0];
+        int32_t next_y = y + directions[dir][1];
+        if (next_x < 0 || next_x >= GRID_SIZE || next_y < 0 || next_y >= GRID_SIZE) {
+            continue;
+        }
+        recursive(grid, next_x, next_y);
+    }
+}
+
+int solve_puzzle(char* file_name)
+{
+    char grid[GRID_SIZE][GRID_SIZE + 1] = {0};
+    int8_t grid_height = GRID_SIZE;
+    int8_t grid_width = GRID_SIZE;
+
+    for (int32_t hash_row=0; hash_row<128; hash_row++) {
+        uint8_t hash_values[16];
+        char hash[32] = {0};
+        sprintf(hash, "%s-%d", file_name, hash_row);
+        create_hash(hash, hash_values);
+        for (int8_t i=0; i<16; i++) {
+            uint8_t byte = hash_values[i];
+            for (int8_t bit=0; bit<8; bit++) {
+                int32_t index = i * 8 + bit;
+                if (byte & (1<<(7 - bit))) {
+                    grid[hash_row][index] = '#'; 
+                } else {
+                    grid[hash_row][index] = '.';
+                }
+            }
+        }
+    }
+
+    int32_t counter = 0;
+    for (int32_t y=0; y<128; y++) {
+        for (int32_t x=0; x<128; x++) {
+            char tile = grid[y][x];
+            if (tile != '#') {
+                continue;
+            }
+            counter++;
+            recursive(grid, x, y);
+        }
+    }
+
+    printf("Grid:\n");
+    for (int32_t i=0; i<128; i++) {
+        printf("    %s\n", grid[i]);
+    }
+
+    printf("Answer: %d\n", counter);
+    printf("File: %s\n", file_name);
+}
+
 //######################################################################################################################
 
 int main(int argc, char* argv[])
