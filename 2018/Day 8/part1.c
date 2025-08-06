@@ -12,28 +12,25 @@
 
 //######################################################################################################################
 
-int32_t recursive(int32_t** p_values, int32_t dept)
+int32_t recursive(int32_t* values, int32_t* p_index, int32_t dept)
 {
-    int32_t* values = *p_values;
+    int32_t index = *p_index;
     int32_t sum = 0;
-    int32_t children = values[0];
-    int32_t metadata = values[1];
-
-    printf("Header: Childern: %d, Metadata: %d\n", children, metadata);
+    int32_t children = values[index + 0];
+    int32_t metadata = values[index + 1];
     
-    *p_values = &values[2];
+    index += 2;
     for (int32_t i=0; i<children; i++) {
-        sum += recursive(p_values, dept + 1);
+        sum += recursive(values, &index, dept + 1);
     }
 
-    values = *p_values;
     for (int32_t i=0; i<metadata; i++) {
-        printf("Metadata: %d\n", values[i]);
-        sum += values[i];
+        sum += values[index + i];
     }
     if (dept != 0) {
-        *p_values = &values[metadata];
+        index += metadata;
     }
+    *p_index = index;
     return sum;
 }
 
@@ -57,7 +54,7 @@ int solve_puzzle(char* file_name)
     }
     fread(string, 1, length, p_file);
 
-    int32_t value_size = 2000;
+    int32_t value_size = 20000;
     int32_t* values = (int32_t*)malloc(sizeof(int32_t) * value_size);
     int32_t value_count = 0;
 
@@ -76,12 +73,12 @@ int solve_puzzle(char* file_name)
     fclose(p_file);
     free(string);
 
-    int32_t** p_values = &values;
-    int32_t sum = recursive(p_values, 0);
+    int32_t index = 0;
+    int32_t sum = recursive(values, &index, 0);
 
     printf("Answer: %d\n", sum);
 
-    // free(values);
+    free((void*)values);
 
     return 0;
 }
