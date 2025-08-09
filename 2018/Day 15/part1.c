@@ -369,8 +369,11 @@ int8_t map_play(Map_t* map)
     // for each agent do a move
     for (int32_t agent_id=0; agent_id<agent_count; agent_id++) {
         Tile_t* tile = agents[agent_id];
+
+        // let agent take a turn.
         agents[agent_id] = map_agent_move(map, tile);
 
+        // check if the game is done.
         int32_t elf_count = 0;
         int32_t globin_count = 0;
         for (int32_t y=0; y<map->height; y++) {
@@ -382,6 +385,8 @@ int8_t map_play(Map_t* map)
             }
         }
 
+        // return if victory has been achieved with encoding if
+        // the last action in a round ended the game.
         if (globin_count == 0) {
             return 1 + 100 * (agent_id == agent_count - 1);
         } else if (elf_count == 0) {
@@ -411,6 +416,7 @@ int32_t map_get_health(Map_t* map)
 
 int solve_puzzle(char* file_name)
 {
+    // resolve input data.
     FILE* p_file = fopen(file_name, "r");
     if (p_file == NULL) {
         printf("Failed to open file!\n");
@@ -436,6 +442,7 @@ int solve_puzzle(char* file_name)
         return 1;
     }
 
+    // pre process the input data.
     for (int32_t y=0; y<map.height; y++) {
         fgets(buffer, 256, p_file);
         for (int32_t x=0; x<map.width; x++) {
@@ -466,6 +473,7 @@ int solve_puzzle(char* file_name)
         }
     }
     
+    // play the game.
     int32_t rounds_played = 0;
     int32_t iterations = 100;
     for (int32_t iteration=0; iteration<iterations; iteration++) {
@@ -478,9 +486,7 @@ int solve_puzzle(char* file_name)
 
     int32_t total_health = map_get_health(&map);
     int32_t answer = rounds_played * total_health;
-    
     printf("Answer: %d\n", answer);
-
     fclose(p_file);
     free(map.tiles);
 }
