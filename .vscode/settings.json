@@ -8,6 +8,7 @@
         "math.h": "c",
         "type_traits": "c",
         "cmath": "c",
-        "cstdlib": "c"
+        "cstdlib": "c",
+        "limits": "c"
     }
 }
