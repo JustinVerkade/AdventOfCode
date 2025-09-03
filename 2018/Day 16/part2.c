@@ -224,6 +224,20 @@ int solve_puzzle(char* file_name)
         }
     }
 
+    // print redirect table
+    printf("int8_t redirect[] = {");
+    for (int32_t i=0; i<instruction_count; i++) {
+        int32_t instruction = i;
+        int32_t mask_id = 0;
+        for (;mask_id<masks_size; mask_id++) {
+            if (masks[instruction] & (1<<mask_id)) {
+                break;
+            }
+        }
+        printf("%d, ", mask_id);
+    }
+    printf("};\n");
+
     // execute instructions
     int32_t registers[4] = {0, 0, 0, 0};
     char buffer[64] = {0};
