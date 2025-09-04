@@ -10,6 +10,7 @@
         "cmath": "c",
         "cstdlib": "c",
         "limits": "c",
-        "decypher": "c"
+        "decypher": "c",
+        "threads.h": "c"
     }
 }
