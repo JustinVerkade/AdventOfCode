@@ -14,7 +14,21 @@
 
 int solve_puzzle(char* file_name)
 {
-    printf("File: %s\n", file_name);
+    FILE* p_file = fopen(file_name, "r");
+    if (p_file == NULL) {
+        printf("Failed to open file!\n");
+        return 1;
+    }
+
+    int32_t answer = 0;
+    int32_t mass = 0;
+    while (fscanf(p_file, "%d\n", &mass) == 1) {
+        int32_t result = mass / 3 - 2;
+        answer += result;
+    }
+    fclose(p_file);
+    printf("Answer: %d\n", answer);
+
     return 0;
 }
 
