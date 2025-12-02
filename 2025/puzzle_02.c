@@ -217,6 +217,8 @@ static int64_t part_1(char* file_name)
     ret = f_read(&file, data, file_size, &bytes_read);
     if (ret != FR_OK) {
         bsp_cprint("Failed to read file!\n");
+        bsp_memory_free();
+        f_close(&file);
         return -1;
     }
 
@@ -228,6 +230,8 @@ static int64_t part_1(char* file_name)
         int64_t end_val;
         if (sscanf(token_ptr, "%lld-%lld", &start_val, &end_val) != 2) {
             bsp_cprint("scanff failed to read range\n");
+            bsp_memory_free();
+            f_close(&file);
             return -1;
         }
         token_ptr = strtok(NULL, ",");
@@ -263,6 +267,8 @@ static int64_t part_2(char* file_name)
     ret = f_read(&file, data, file_size, &bytes_read);
     if (ret != FR_OK) {
         bsp_cprint("Failed to read file!\n");
+        bsp_memory_free();
+        f_close(&file);
         return -1;
     }
 
@@ -274,6 +280,8 @@ static int64_t part_2(char* file_name)
         int64_t end_val;
         if (sscanf(token_ptr, "%lld-%lld", &start_val, &end_val) != 2) {
             bsp_cprint("scanff failed to read range\n");
+            bsp_memory_free();
+            f_close(&file);
             return -1;
         }
         token_ptr = strtok(NULL, ",");
