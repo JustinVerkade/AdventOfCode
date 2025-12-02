@@ -134,11 +134,6 @@ int64_t scan_numbers_part_2(int64_t start_val, int64_t end_val)
             }
             prev_length = length;
         }
-        
-        // keep cache of invalid IDs to filter out
-        // any duplicates.
-        int64_t invalid_ids[256];
-        int32_t invalid_id_count = 0;
 
         // for each divisor we test if the value string
         // is a multiple of the test case.
@@ -168,24 +163,9 @@ int64_t scan_numbers_part_2(int64_t start_val, int64_t end_val)
                 continue;
             }
 
-            // values with only 1 type of digit may pass the
-            // previous test multiple times so we need to
-            // cache the invalid IDs so we do not count
-            // duplicates.
-            int8_t already = 0;
-            for (int32_t h=0; h<invalid_id_count; h++) {
-                if (i == invalid_ids[h]) {
-                    already = 1;
-                    break;
-                }
-            }
-            if (already) {
-                continue;
-            }
-
-            // add value to cache and add value to sum.
-            invalid_ids[invalid_id_count++] = i;
+            // add value to sum.
             sum += i;
+            break;
         }
     }
     return sum;
