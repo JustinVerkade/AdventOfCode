@@ -73,7 +73,7 @@
 int32_t value_digits(int64_t value)
 {
     char buf[32];
-    sprintf(buf, "%ld", value);
+    sprintf(buf, "%lld", value);
     int32_t length = strlen(buf);
     return length;
 }
@@ -92,7 +92,7 @@ int64_t scan_numbers_part_1(int64_t start_val, int64_t end_val)
             continue;
         }
         char pbuf[64];
-        sprintf(pbuf, "%ld", i);
+        sprintf(pbuf, "%lld", i);
         if (memcmp(pbuf, pbuf+length/2, length/2)) {
             continue;
         }
@@ -143,7 +143,7 @@ int64_t scan_numbers_part_2(int64_t start_val, int64_t end_val)
         // for each divisor we test if the value string
         // is a multiple of the test case.
         char pbuf[64];
-        sprintf(pbuf, "%ld", i);
+        sprintf(pbuf, "%lld", i);
         for (int32_t j=0; j<divisor_count; j++) {
             int32_t div = divisors[j];
 
@@ -224,20 +224,13 @@ static int64_t part_1(char* file_name)
     int64_t result = 0;
     char* token_ptr = strtok(data, ",");
     while (token_ptr != NULL) {
-        int32_t token_length = strlen(token_ptr);
-        if (token_ptr[token_length - 1] == '\n') {
-            token_ptr[token_length - 1] = 0;
+        int64_t start_val;
+        int64_t end_val;
+        if (sscanf(token_ptr, "%lld-%lld", &start_val, &end_val) != 2) {
+            bsp_cprint("scanff failed to read range\n");
+            return -1;
         }
-
-        // extract the first and second value.
-        char* start = token_ptr;
         token_ptr = strtok(NULL, ",");
-        int64_t start_val = atoll(start);
-        while (*(start++) != '-');
-        int64_t end_val = atoll(start);
-
-        // find the sum of invalid keys in the
-        // value range.
         result += scan_numbers_part_1(start_val, end_val);
     }
 
@@ -277,20 +270,13 @@ static int64_t part_2(char* file_name)
     int64_t result = 0;
     char* token_ptr = strtok(data, ",");
     while (token_ptr != NULL) {
-        int32_t token_length = strlen(token_ptr);
-        if (token_ptr[token_length - 1] == '\n') {
-            token_ptr[token_length - 1] = 0;
+        int64_t start_val;
+        int64_t end_val;
+        if (sscanf(token_ptr, "%lld-%lld", &start_val, &end_val) != 2) {
+            bsp_cprint("scanff failed to read range\n");
+            return -1;
         }
-
-        // extract the first and second value.
-        char* start = token_ptr;
         token_ptr = strtok(NULL, ",");
-        int64_t start_val = atoll(start);
-        while (*(start++) != '-');
-        int64_t end_val = atoll(start);
-
-        // find the sum of invalid keys in the
-        // value range.
         result += scan_numbers_part_2(start_val, end_val);
     }
 
