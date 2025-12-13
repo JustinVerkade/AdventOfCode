@@ -104,7 +104,6 @@ int64_t process_battery_bank(char* buffer, int32_t length, int8_t batteries)
                 current_index = index;
             }
         }
-
         int64_t multiplier = 1;
         for (int32_t i=0; i<batteries_left-1; i++) {
             multiplier *= 10;
